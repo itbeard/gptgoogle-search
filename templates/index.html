@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo" class="logo">
+        <form id="search-form" action="{{ url_for('search') }}" method="get">
+            <div class="search-input-container">
+                <input type="text" name="q" id="search-input" placeholder="Search">
+                <div class="search-icon"></div>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="search-button">Search</button>
+                <button type="button" class="lucky-button">I'm Feeling Lucky</button>
+            </div>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

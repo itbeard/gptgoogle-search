@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ query }} - Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="results-page">
+    <header>
+        <div class="header-content">
+            <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo" class="logo-small">
+            <form id="search-form" action="{{ url_for('search') }}" method="get">
+                <div class="search-input-container">
+                    <input type="text" name="q" id="search-input" value="{{ query }}" placeholder="Search">
+                    <div class="search-icon"></div>
+                </div>
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>
+    </header>
+    <div class="results-container">
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% else %}
+            {% for result in results %}
+            <div class="result">
+                <div class="result-url">{{ result.url }}</div>
+                <h3><a href="{{ result.url }}">{{ result.title }}</a></h3>
+                <p>{{ result.content }}</p>
+            </div>
+            {% endfor %}
+            <div class="pagination">
+                {% if page > 1 %}
+                <a href="{{ url_for('search', q=query, page=page-1) }}" class="pagination-link">Previous</a>
+                {% endif %}
+                <span class="pagination-info">Page {{ page }} of {{ total_pages }}</span>
+                {% if page < total_pages %}
+                <a href="{{ url_for('search', q=query, page=page+1) }}" class="pagination-link">Next</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
