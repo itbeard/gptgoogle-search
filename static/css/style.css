@@ -67,7 +67,7 @@ body {
     gap: 10px;
 }
 
-.search-button, .lucky-button {
+.search-button, .lucky-button, .ai-search-button {
     background-color: #f8f9fa;
     border: 1px solid #f8f9fa;
     border-radius: 4px;
@@ -84,7 +84,7 @@ body {
     user-select: none;
 }
 
-.search-button:hover, .lucky-button:hover {
+.search-button:hover, .lucky-button:hover, .ai-search-button:hover {
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
     background-color: #f8f9fa;
     border: 1px solid #dadce0;
@@ -174,4 +174,25 @@ header {
     color: #d93025;
     font-size: 16px;
     text-align: center;
+}
+
+.ai-summary {
+    background-color: #f8f9fa;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.ai-summary h2 {
+    color: #1a0dab;
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.ai-summary p {
+    color: #202124;
+    font-size: 14px;
+    line-height: 1.58;
+    margin: 0;
 }

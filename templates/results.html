@@ -20,6 +20,12 @@
         </div>
     </header>
     <div class="results-container">
+        {% if summary %}
+            <div class="ai-summary">
+                <h2>AI Summary</h2>
+                <p>{{ summary }}</p>
+            </div>
+        {% endif %}
         {% if error %}
             <p class="error-message">{{ error }}</p>
         {% else %}
@@ -32,11 +38,11 @@
             {% endfor %}
             <div class="pagination">
                 {% if page > 1 %}
-                <a href="{{ url_for('search', q=query, page=page-1) }}" class="pagination-link">Previous</a>
+                <a href="{{ url_for('search', q=query, page=page-1, ai_search=request.args.get('ai_search')) }}" class="pagination-link">Previous</a>
                 {% endif %}
                 <span class="pagination-info">Page {{ page }} of {{ total_pages }}</span>
                 {% if page < total_pages %}
-                <a href="{{ url_for('search', q=query, page=page+1) }}" class="pagination-link">Next</a>
+                <a href="{{ url_for('search', q=query, page=page+1, ai_search=request.args.get('ai_search')) }}" class="pagination-link">Next</a>
                 {% endif %}
             </div>
         {% endif %}
